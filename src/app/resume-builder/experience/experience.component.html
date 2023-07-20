@@ -1,0 +1,73 @@
+
+<form class="experience-form" [formGroup]="experienceForm" (ngSubmit)="addExperience()">
+
+        <div class="btn-add">
+          <button  mat-icon-button type="button"  class="add" (click)="addAnother()"><mat-icon>add_box</mat-icon></button>
+      </div> 
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Company</mat-label>
+          <input matInput placeholder="" formControlName="company" required/>
+          <mat-error *ngIf="experienceForm.get('company')?.hasError('required')">
+            Company name required
+          </mat-error>
+        </mat-form-field>
+       </div>
+     
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Location</mat-label>
+            <input matInput placeholder="" formControlName="location" />
+          </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="web">
+              <mat-label>Position</mat-label>
+              <input matInput placeholder="ex.Senior developer" formControlName="position" required/>
+              <mat-error *ngIf="experienceForm.get('company')?.hasError('required')">
+                Position/Designation is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+    
+        <div >
+          <mat-form-field appearance="outline">
+            <mat-label>Start-date</mat-label>
+            <input matInput [matDatepicker]="sd" formControlName="startDate" required/>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="sd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #sd></mat-datepicker>
+            <mat-error *ngIf="experienceForm.get('startDate')?.hasError('required')">
+              Start-date is required
+            </mat-error>
+          </mat-form-field>
+    
+          <span class="dates">
+            <mat-form-field appearance="outline">
+              <mat-label>End-date</mat-label>
+              <input matInput [matDatepicker]="ed" formControlName="endDate"  />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="ed"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #ed></mat-datepicker>
+              
+            </mat-form-field>
+          </span>
+          
+        </div>
+        <div>
+
+          <mat-form-field appearance="outline"  class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput  class="area" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+  
+        <div class="btn-sec">
+        <button mat-icon-button type="submit" [disabled]="experienceForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+      </div>
+
+  </form>

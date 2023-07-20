@@ -1,0 +1,141 @@
+<form class="personal-details-form" [formGroup]="personalDetailsForm" (ngSubmit)="addDetails()" autocomplete="on" >
+  <div>
+    <h3>
+     <strong>*Note:</strong> To save data  click on     <span class="note"><mat-icon >save</mat-icon> </span>      button. <br>
+            You can skip any of the following step except <strong>personal details</strong>.<strong>Personal details are mandatory</strong>
+    </h3>
+  </div><br>
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="ex.John" formControlName="fname" required minlength="3"/>
+          <mat-error *ngIf="personalDetailsForm.get('fname')?.hasError('required')">
+            First name is required.
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('fname')?.hasError('minlength')">
+            First name should have minimum 3 characters.
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('fname')?.hasError('pattern')">
+            Only alphabets allowed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="ex.Wick" formControlName="lname" required minlength="3"/>
+          <mat-error *ngIf="personalDetailsForm.get('lname')?.hasError('required')">
+            Last name is required.
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('lname')?.hasError('minlength')">
+            Last name should have minimum 3 characters.
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('lname')?.hasError('pattern')">
+            Only alphabets allowed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field appearance="outline">
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" formControlName="dob" required/>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+       
+        <span class="dates"><mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <input type="text"
+                 placeholder="Choose one"   
+                 matInput
+                 formControlName="gender"
+                 [matAutocomplete]="auto" required>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field></span>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="ex.john@gmail.com" formControlName="email" required/>
+          <mat-error *ngIf="personalDetailsForm.get('email')?.hasError('pattern')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Contact</mat-label>
+          <input matInput placeholder="98xxxxxxxx" formControlName="contact" required/>
+          <mat-error *ngIf="personalDetailsForm.get('contact')?.hasError('required')">
+            Contact number is required
+          </mat-error>
+          <mat-error *ngIf="personalDetailsForm.get('contact')?.hasError('pattern')">
+            Enter valid contact number
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="ex.Pune" formControlName="city" required/>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="MH" formControlName="state" required/>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Linkedin</mat-label>
+          <input matInput placeholder="Linkedin profile" formControlName="linkedin_link"/>
+          <mat-error *ngIf="personalDetailsForm.get('linkedin_link')?.hasError('pattern')">
+            Enter valid linkedin link
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Github</mat-label>
+          <input matInput placeholder="Github link" formControlName="githublink"/>
+          <mat-error *ngIf="personalDetailsForm.get('githublink')?.hasError('pattern')">
+            Enter valid github link
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Website/Portfolio</mat-label>
+          <input matInput placeholder="website" formControlName="website" />
+          <mat-error *ngIf="personalDetailsForm.get('website')?.hasError('pattern')">
+            Enter a valid website
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="btn-sec">
+        <button mat-icon-button [disabled]="personalDetailsForm.invalid" type="submit" class="btn"><mat-icon>save</mat-icon></button>
+      </div>
+
+</form>

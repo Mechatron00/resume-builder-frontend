@@ -1,0 +1,75 @@
+
+
+      <mat-accordion class="accordian example-headers-align" multi>
+        <mat-expansion-panel expanded hideToggle> 
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             Educational Details
+            </mat-panel-title>
+            <mat-panel-description>
+              Edit Educational Data
+              <mat-icon><span class="material-symbols-outlined">
+                school
+                </span></mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <form class="education-form" [formGroup]="editEducationForm" (ngSubmit)="editEducation()">
+
+            <div>
+             <mat-form-field appearance="outline" class="web">
+               <mat-label>Institution name</mat-label>
+               <input matInput placeholder="" formControlName="institute_name" required/>
+             </mat-form-field>
+            </div>
+          
+             <div>
+               <mat-form-field appearance="outline" class="web">
+                 <mat-label>Degree</mat-label>
+                 <input matInput placeholder="ex.BE." formControlName="degree" />
+               </mat-form-field>
+             </div>
+             <div>
+                 <mat-form-field appearance="outline" class="web">
+                   <mat-label>Branch</mat-label>
+                   <input matInput placeholder="ex.Mechanical" formControlName="branch" />
+                 </mat-form-field>
+               </div>
+         
+             <div class="dates">
+             
+               <mat-form-field appearance="outline" class="mat-date">
+                 <mat-label>Start-date</mat-label>
+                 <input matInput [matDatepicker]="sd" formControlName="startDate" required/>
+                 <mat-datepicker-toggle
+                   matIconSuffix
+                   [for]="sd"
+                 ></mat-datepicker-toggle>
+                 <mat-datepicker #sd></mat-datepicker>
+               </mat-form-field>
+              
+         
+             
+               <mat-form-field appearance="outline" class="mat-date">
+                 <mat-label>End-date</mat-label>
+                 <input matInput [matDatepicker]="ed" formControlName="endDate" required/>
+                 <mat-datepicker-toggle
+                   matIconSuffix
+                   [for]="ed"
+                 ></mat-datepicker-toggle>
+                 <mat-datepicker #ed></mat-datepicker>
+               </mat-form-field>
+             
+               
+             </div>
+             <div>
+               <mat-form-field appearance="outline" class="web">
+                 <mat-label>Score</mat-label>
+                 <input matInput placeholder="Enter your final score" formControlName="score" />
+               </mat-form-field>
+             </div>
+             <div class="btn-sec">
+             <button mat-icon-button type="submit" [disabled]="editEducationForm.invalid"  class="btn"><mat-icon>save</mat-icon></button>
+           </div>
+       </form>   
+        </mat-expansion-panel>
+      </mat-accordion>

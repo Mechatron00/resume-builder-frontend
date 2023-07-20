@@ -1,0 +1,59 @@
+.awards-form
+{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    
+    
+}
+.btn-add
+{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+.dates
+{
+    display: flex;
+    justify-content: space-between;
+}
+.web
+{
+   
+    width: 1000px;
+}
+.description
+{
+    width: 1000px;
+    
+}
+.btn-sec
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accordian
+  {
+    display: flex; 
+     justify-content: center;
+    
+  }
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mat-action
+  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  

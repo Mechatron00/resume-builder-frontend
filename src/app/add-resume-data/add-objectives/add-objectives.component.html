@@ -1,0 +1,48 @@
+
+<mat-accordion class="accordian example-headers-align" multi  >
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Objectives </mat-panel-title>
+        <mat-panel-description>
+          Enter your career objectives.
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              emoji_flags
+            </span></mat-icon
+          >
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form
+      class="objectives-form"
+      [formGroup]="addObjectivesForm"
+      (ngSubmit)="addObjective()"
+    >
+          <div>
+            <mat-form-field appearance="outline" class="web">
+              <mat-label>Objective</mat-label>
+              <textarea
+                class="area"
+                formControlName="objective"
+                matInput maxlength="160"
+                required
+                placeholder="ex.A challenging career opportunity in a growing company that offers opportunity for advancement."
+              ></textarea>
+              
+              <mat-error *ngIf="addObjectivesForm.get('objective')?.hasError('required')">Objective required</mat-error>
+              <mat-hint>Enter upto 160 characters. 
+                <span *ngIf="addObjectivesForm.get('objective')?.valueChanges">
+                  {{getCount()}}{{count}}/160
+                </span>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+    
+          <div class="btn-sec">
+            <button mat-icon-button type="submit" class="btn" [disabled]="addObjectivesForm.invalid">
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
+    
+    </form>     
+    </mat-expansion-panel>
+  </mat-accordion>

@@ -1,0 +1,38 @@
+<mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel expanded hideToggle >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Personal Skills
+        </mat-panel-title>
+        <mat-panel-description>
+          Your Personal skills describing your nature.
+          <mat-icon><span class="material-symbols-outlined">
+              psychology
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="personalskills-form" [formGroup]="addPersonalSkillForm" (ngSubmit)="addPersonalSkill()">
+  
+   
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Personal Skill</mat-label>
+          <input matInput placeholder="" formControlName="description" required  maxlength="160"/>
+          <mat-error *ngIf="addPersonalSkillForm.get('description')?.hasError('required')">Enter your personal skill.</mat-error>
+          <mat-hint>Enter upto 160 characters. 
+            <span *ngIf="addPersonalSkillForm.get('description')?.valueChanges">
+              {{getCount()}}{{count}}/160
+            </span>
+          </mat-hint>
+        </mat-form-field>
+       </div>
+  
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="addPersonalSkillForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>     
+    </mat-expansion-panel>
+  </mat-accordion>

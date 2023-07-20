@@ -1,0 +1,764 @@
+<div class="grid-container" >
+  <div class="profile-menu">
+  
+    <span class="name-plate">
+      {{ personalDetails.fname | uppercase }}
+      {{ personalDetails.lname | uppercase }}
+    </span>
+    <span class="example-spacer"></span>
+    <button mat-mini-fab  [matMenuTriggerFor]="menu" color="warn">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="toTemplate1()">
+        <mat-icon>description</mat-icon>
+        <span>Template #1</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Sign out</span>
+      </button>
+      
+    </mat-menu>
+  </div>
+
+  <mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-toolbar class="mat-h1 name-plate" >
+            <mat-icon
+              ><span class="material-symbols-outlined"> person </span></mat-icon
+            ><span class="example-spacer"></span> Personal Details
+            <span class="example-spacer"></span>
+            <div class="example-button-container">
+              <button
+                mat-mini-fab
+                color="accent"
+                (click)="editPersonalDetails(personalDetails)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </mat-toolbar>
+        </mat-card-header>
+        <div *ngIf="!personalDetails">
+          <mat-card-content>
+            <p class="no-record">Theres no record to show!</p>
+          </mat-card-content>
+        </div>
+        <mat-card-content>
+          <div>
+            <p class="details">
+              {{ personalDetails.fname | uppercase }}
+              {{ personalDetails.lname | uppercase }}
+            </p>
+          </div>
+        </mat-card-content>
+        <mat-card-content>
+          <div>
+            <p class="details">{{ personalDetails.email }}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-content>
+          <div>
+            <p class="details">{{ personalDetails.contact }}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-content>
+          <div>
+            <p class="details">{{ personalDetails.city }}</p>
+          </div>
+          <div class="icons">
+            <span class="social-icons" *ngIf="personalDetails.linkedin_link">
+              <a
+                href="{{ personalDetails.linkedin_link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <fa-icon
+                class="icon-appearance"
+                  [icon]="faLinkedin"
+                ></fa-icon> </a
+            ></span>
+
+            <span class="social-icons" *ngIf="personalDetails.githublink">
+              <a
+                href="{{ personalDetails.githublink }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <fa-icon
+                  class="icon-appearance"
+                  [icon]="faGithub"
+                ></fa-icon> </a
+            ></span>
+            <span class="social-icons" *ngIf="personalDetails.website">
+              <a
+                href="{{ personalDetails.website }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <mat-icon class="icon-appearance"
+                  ><span class="material-symbols-outlined">
+                    open_in_new
+                  </span></mat-icon
+                >
+              </a>
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-toolbar class="mat-h1 name-plate">
+            <mat-icon
+              ><span class="material-symbols-outlined"> flag </span></mat-icon
+            >
+            <span class="example-spacer"></span>
+            Objectives
+            <span class="example-spacer"></span>
+            <div class="example-button-container">
+              <button mat-mini-fab color="accent" (click)="addObjective()">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </mat-toolbar>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <div *ngIf="objectives.length === 0">
+            <mat-card-content>
+              <p class="no-record">Theres no record to show!</p>
+            </mat-card-content>
+          </div>
+          <div class="objectives-container">
+            <div *ngFor="let objective of objectives" class="objective-item">
+              <p class="objective">{{ objective.objective }}</p>
+              <span class="example-spacer"></span>
+              <button
+                mat-icon-button
+                class="example-icon"
+                (click)="editObjectives(objective)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                class="example-icon"
+                (click)="deleteObjective(objective.id)"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<mat-divider></mat-divider>
+<mat-tab-group animationDuration="100ms" color="primary">
+  <mat-tab label="Education" >
+    <div class="grid-container " >
+      <mat-toolbar  class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            school
+            </span></mat-icon>
+          <span class="toolbar-heading">Education</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addEducation()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="educations.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">Add educational data to show.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-grid-list cols="3" rowHeight="200px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]=""
+          *ngFor="let education of educations"
+        >
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ education.institute_name }}
+                <button
+                  mat-icon-button
+                  class="more-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                  <button
+                    class="example-icon"
+                    mat-menu-item
+                    (click)="editEducation(education)"
+                  >
+                    Edit<mat-icon>edit</mat-icon>
+                  </button>
+                  <!-- <button mat-menu-item mat-icon-button class="example-icon">
+                    <mat-icon>edit</mat-icon>
+                  </button> -->
+                  <button mat-menu-item (click)="deleteEducation(education.id)">
+                    <mat-icon>delete_forever</mat-icon>Delete
+                  </button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="content">{{ education.degree }} <span *ngIf="education.branch">({{education.branch}})</span> </div>
+              <div class="content">
+                {{ education.startDate | date : "yyyy" }} -
+                {{ education.endDate | date : "yyyy" }}
+              </div>
+              <div class="content">{{ education.score }}%</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Experience">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            work
+            </span></mat-icon>
+          <span class="toolbar-heading">Experience</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addExperience()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="experiences.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">Add experience to show.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-grid-list cols="3" rowHeight="250px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1"
+          *ngFor="let experience of experiences"
+        >
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ experience.company }}
+                <button
+                  mat-icon-button
+                  class="more-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                  <button
+                    class="example-icon"
+                    mat-menu-item
+                    (click)="editExperience(experience)"
+                  >
+                    <mat-icon>edit</mat-icon>Edit
+                  </button>
+                 
+                  <button
+                    mat-menu-item
+                    (click)="deleteExperience(experience.id)"
+                  >
+                    <mat-icon>delete_forever</mat-icon>Delete
+                  </button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="content">   {{ experience.position }}</div>
+              <div class="content">{{ experience.location }}</div>
+              <div class="content">
+                {{ experience.startDate | date : "MMMM yyyy" }} to
+                {{ experience.endDate | date : "MMMM yyyy" }}
+              </div>
+              <div class="content " *ngIf="experience.description">{{ experience.description }}</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Projects">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            assignment
+            </span></mat-icon>
+          <span class="toolbar-heading">Projects</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addProject()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="projects.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">No projects added.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-grid-list cols="3" rowHeight="210px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]=""
+          *ngFor="let project of projects"
+        >
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title >
+                {{ project.title }} 
+                <span class="content"  *ngIf="project.weblink">  <a class="weblink" target="_blank" href="{{ project.weblink }}">
+                   <mat-icon ><span >
+                  open_in_new
+                  </span></mat-icon>
+               </a></span>
+                <button
+                  mat-icon-button
+                  class="more-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                  <button
+                    class="example-icon"
+                    mat-menu-item
+                    (click)="editProject(project)"
+                  >
+                    <mat-icon>edit</mat-icon>Edit
+                  </button>
+
+                  <button mat-menu-item (click)="deleteProject(project.id)">
+                    <mat-icon>delete_forever</mat-icon>Delete
+                  </button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="content">
+                {{ project.startDate | date : "MMM-yyyy" }} to
+                {{ project.endDate | date : "MMM-yyyy" }}
+              </div>
+              <div class="content " *ngIf="project.description">{{ project.description }}</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Certifications">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            workspace_premium
+            </span></mat-icon>
+          <span class="toolbar-heading">Certifications</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addCertificate()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="certificates.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">No certificates added.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-grid-list cols="3" rowHeight="210px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1"
+          *ngFor="let certificate of certificates"
+        >
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ certificate.title }}
+                <span class="content"  *ngIf="certificate.weblink">  <a class="weblink" target="_blank" href="{{ certificate.weblink }}">
+                  <mat-icon ><span >
+                 open_in_new
+                 </span></mat-icon>
+              </a></span>
+                <button
+                  mat-icon-button
+                  class="more-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="after">
+                  <button
+                    class="example-icon"
+                    mat-menu-item
+                    (click)="editCertification(certificate)"
+                  >
+                    Edit<mat-icon>edit</mat-icon>
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="deleteCertification(certificate.id)"
+                  >
+                    Delete<mat-icon>delete_forever</mat-icon>
+                  </button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="content">
+                {{ certificate.issuedBy }}
+              </div>
+              <div class="content">
+                {{ certificate.issuedDate | date : "MMM-yyyy" }}
+              </div>
+              <div class="content " *ngIf="certificate.description">{{ certificate.description }}</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Awards">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            military_tech
+            </span></mat-icon>
+          <span class="toolbar-heading">Awards</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addAwards()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="awards.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">No Awards added.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-grid-list cols="4" rowHeight="250px">
+        <mat-grid-tile [colspan]="" [rowspan]="" *ngFor="let award of awards">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ award.title }}
+                <button
+                  mat-icon-button
+                  class="more-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="after">
+                  <button
+                    class="example-icon"
+                    mat-menu-item
+                    (click)="editAwards(award)"
+                  >
+                    <mat-icon>edit</mat-icon>Edit
+                  </button>
+                  <!-- <button mat-menu-item mat-icon-button class="example-icon">
+                    <mat-icon>edit</mat-icon>
+                  </button> -->
+                  <button mat-menu-item (click)="deleteAward(award.id)">
+                    <mat-icon>delete_forever</mat-icon>Delete
+                  </button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="content">{{ award.issuer }}</div>
+              <div class="content">
+                {{ award.issuedDate | date : "MMM-yyyy" }}
+              </div>
+              <div class="content " *ngIf="award.description">{{ award.description }}</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Skills">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            stars
+            </span></mat-icon>
+          <span class="toolbar-heading">Skills</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addSkill()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+      <div *ngIf="skills.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">No Skills added.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- <mat-grid-list cols="8" rowHeight="80px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let skill of skills">
+          <mat-card class="skills">
+            <mat-card-content >
+              <div style="font-size: large;" class="content objective-item delete-button">
+                {{ skill.skill }}<span class="example-spacer"></span>
+                <button
+                  mat-icon-button
+                  class="example-icon"
+                  (click)="deleteSkill(skill.id)"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list> -->
+      <div class="chip-container">
+      <mat-chip-listbox  *ngFor="let skill of skills" >
+        <mat-chip-option selectable="false" selected color="accent">{{skill.skill}} <button matChipRemove (click)="deleteSkill(skill.id)">
+          <mat-icon>cancel</mat-icon>
+        </button> </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Personal Skills">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            psychology
+            </span></mat-icon>
+          <span class="toolbar-heading">Personal Skills</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addPersonalskill()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-grid-list cols="1" rowHeight="250px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-card class="dashboard-card">
+            <mat-card-content class="card-content">
+              <div *ngIf="peronalSkills.length === 0">
+                <mat-card-content>
+                  <p class="no-record">Theres no record to show!</p>
+                </mat-card-content>
+              </div>
+              <div class="objectives-container">
+                <div
+                  *ngFor="let pskill of peronalSkills"
+                  class="objective-item"
+                >
+                  <p class="objective">{{ pskill.description }}</p>
+                  <span class="example-spacer"></span>
+                  <button
+                    mat-icon-button
+                    class="example-icon"
+                    (click)="deletePersonalSkill(pskill.id)"
+                  >
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Extracurricular Activities">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            local_activity
+            </span></mat-icon>
+          <span class="toolbar-heading">Extracurricular Activities </span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addExtracurricular()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-grid-list cols="1" rowHeight="250px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-card class="dashboard-card">
+            <mat-card-content class="card-content">
+              <div *ngIf="extracurriculars.length === 0">
+                <mat-card-content>
+                  <p class="no-record " >No Extracurricular Activity added.</p>
+                </mat-card-content>
+              </div>
+              <div class="objectives-container">
+                <div
+                  *ngFor="let activity of extracurriculars"
+                  class="objective-item"
+                >
+                  <p class="objective">{{ activity.description }}</p>
+                  <span class="example-spacer"></span>
+                  <button
+                    mat-icon-button
+                    class="example-icon"
+                    (click)="deleteExtracurricular(activity.id)"
+                  >
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Languages">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            translate
+            </span></mat-icon>
+            
+          <span class="toolbar-heading">Languages</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addLanguage()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="languages.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">Add atleast one language you speak.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- <mat-grid-list cols="7" rowHeight="80px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1"
+          *ngFor="let language of languages"
+        >
+          <mat-card class="skills">
+            <mat-card-content>
+              <div class="content objective-item delete-button">
+                {{ language.language }}<span class="example-spacer"></span>
+                <button
+                  mat-icon-button
+                  class="example-icon"
+                  (click)="deleteLanguage(language.id)"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list> -->
+      <!-- <mat-chip-grid #chipGrid  >
+        <mat-chip-row  *ngFor="let language of languages" color="accent" selected >
+          {{language.language}}
+          <button matChipRemove (click)="deleteLanguage(language.id)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid> -->
+      <div class="chip-container">
+      <mat-chip-listbox *ngFor="let language of languages" >
+        <mat-chip-option selectable="false" selected color="accent">{{language.language}} <button matChipRemove (click)="deleteLanguage(language.id)">
+          <mat-icon>cancel</mat-icon>
+        </button> </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Hobbies">
+    <div class="grid-container">
+      <mat-toolbar color="primary" class="toolbar">
+        <mat-toolbar-row>
+          <mat-icon><span class="material-symbols-outlined">
+            sports_cricket
+            </span></mat-icon>
+          <span class="toolbar-heading">Hobbies</span>
+          <span class="example-spacer"></span>
+          <button mat-mini-fab color="accent" (click)="addHobbies()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div *ngIf="hobbies.length === 0">
+        <mat-card>
+          <mat-card-content>
+            <p class="no-record">No Hobbies added.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- <mat-grid-list cols="9" rowHeight="70px">
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1"
+          *ngFor="let hobby of hobbies"
+        >
+          <mat-card class="skills">
+            <mat-card-content>
+              <div class="content objective-item delete-button">
+                {{ hobby.hobby }}<span class="example-spacer"></span>
+                <button
+                  mat-icon-button
+                  class="example-icon"
+                  (click)="deleteHobby(hobby.id)"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list> -->
+      <div class="chip-container">
+        <mat-chip-listbox  *ngFor="let hobby of hobbies">
+          <mat-chip-option selectable="false" selected color="accent">{{hobby.hobby}} <button matChipRemove (click)="deleteHobby(hobby.id)">
+            <mat-icon>cancel</mat-icon>
+          </button> </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+     
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+

@@ -1,0 +1,32 @@
+<mat-accordion class="example-headers-align accordian " multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Hobbies
+        </mat-panel-title>
+        <mat-panel-description>
+          List your hobbies.
+          <mat-icon><span class="material-symbols-outlined">
+              sports_cricket
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="hobbies-form" [formGroup]="addHobbiesForm" (ngSubmit)="addHobby()">
+
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Hobby</mat-label>
+          <input matInput placeholder="Reading" formControlName="hobby" required/>
+          <mat-error *ngIf="addHobbiesForm.get('hobby')?.hasError('required')">Enter hobby.</mat-error> 
+        </mat-form-field>
+       </div>
+       
+       
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="addHobbiesForm.invalid"  class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>    </mat-expansion-panel>
+  </mat-accordion>

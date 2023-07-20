@@ -1,0 +1,42 @@
+<mat-accordion class="example-headers-align accordian " multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Extra-Curricular Activities
+        </mat-panel-title>
+        <mat-panel-description>
+          Describe you extra-curricular activities.
+          <mat-icon><span class="material-symbols-outlined">
+              local_activity
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+     
+<form class="extracurricular-form" [formGroup]="addExtracurricularForm" (ngSubmit)="addExtracurricular()">
+
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="" formControlName="description" required maxlength="150" ></textarea>
+          <mat-hint>Enter upto 150 characters. 
+            <span *ngIf="addExtracurricularForm.get('description')?.valueChanges">
+              {{getCount()}}{{count}}/150
+            </span>
+          </mat-hint>
+          <mat-error *ngIf="addExtracurricularForm.get('position')?.hasError('required')">
+            Activity cannot be empty.
+          </mat-error>
+         
+        </mat-form-field>
+       </div>
+       
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="addExtracurricularForm.invalid"  class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+    </mat-expansion-panel>
+  </mat-accordion>

@@ -1,0 +1,238 @@
+<mat-accordion class="accordian example-headers-align" multi>
+    <mat-expansion-panel   [expanded]="step === 0" (opened)="setStep(0)"  hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title"> Personal Details </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Enter your personal details.
+        <mat-icon><span class="material-symbols-outlined"> badge </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <app-personaldetails [resumeid]="resumeid" [resumeid]="resumeid"></app-personaldetails>
+        <mat-action-row class="mat-action">
+          <button mat-button color="primary" (click)="nextStep();">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel >
+  </mat-accordion>
+  <mat-accordion class="accordian example-headers-align" multi  >
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title"> Objectives </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Enter your career objectives.
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              emoji_flags
+            </span></mat-icon
+          >
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-objectives [resumeid]="resumeid"></app-objectives>
+      <mat-action-row class="mat-action">
+        <div >
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </div>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+  <mat-accordion class="accordian example-headers-align" multi>
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle> 
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+         Educational Details
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Enter your educational details
+          <mat-icon><span class="material-symbols-outlined">
+            school
+            </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-education [resumeid]="resumeid"></app-education>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+  </mat-accordion>
+  <mat-accordion class="accordian example-headers-align" multi>
+    <mat-expansion-panel  [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          Experience
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Enter your experience here!
+          <mat-icon><span class="material-symbols-outlined">
+            work
+            </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-experience [resumeid]="resumeid"></app-experience>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          Projects
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Project details if any!
+          <mat-icon>assignment</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <app-projects [resumeid]="resumeid"></app-projects>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          Certificates
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Add your certificates.
+          <mat-icon><span class="material-symbols-outlined">
+            workspace_premium
+            </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-certification [resumeid]="resumeid"></app-certification>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title"> Awards </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Add your awards here!
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              military_tech
+            </span></mat-icon
+          >
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-awards [resumeid]="resumeid"></app-awards>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          Skills
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Add you skills.
+          <mat-icon><span class="material-symbols-outlined">
+              stars
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-skills [resumeid]="resumeid"></app-skills>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" hideToggle >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+         Personal Skills
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Your Personal skills describing your nature.
+          <mat-icon><span class="material-symbols-outlined">
+              psychology
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-personalskills [resumeid]="resumeid"></app-personalskills>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian " multi>
+    <mat-expansion-panel [expanded]="step === 9" (opened)="setStep(9)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+         Extra-Curricular Activities
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          Describe you extra-curricular activities.
+          <mat-icon><span class="material-symbols-outlined">
+              local_activity
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-extracurricular [resumeid]="resumeid"></app-extracurricular>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel [expanded]="step === 10" (opened)="setStep(10)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+         Language
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          List languages you speak.
+          <mat-icon><span class="material-symbols-outlined">
+              translate
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-languages [resumeid]="resumeid"></app-languages>
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="example-headers-align accordian " multi>
+    <mat-expansion-panel [expanded]="step === 11" (opened)="setStep(11)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+         Hobbies
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+          List your hobbies.
+          <mat-icon><span class="material-symbols-outlined">
+              sports_cricket
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-hobbies [resumeid]="resumeid"></app-hobbies> 
+      <mat-action-row class="mat-action">
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep();submitResume()">Submit</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>

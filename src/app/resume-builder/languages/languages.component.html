@@ -1,0 +1,35 @@
+
+<form class="languages-form" [formGroup]="languageForm" (ngSubmit)="addLanguage()">
+
+        <div class="btn-add">
+          <button  mat-icon-button type="button" (click)="addAnother()"  class="add"><mat-icon>add_box</mat-icon></button>
+      </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Language</mat-label>
+          <input matInput placeholder="ex.Marathi" formControlName="language" required/>
+          <mat-error *ngIf="languageForm.get('language')?.hasError('required')">
+            Enter language
+           </mat-error>
+        </mat-form-field>
+       </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Profiency</mat-label>
+          <input matInput placeholder="ex.Native" formControlName="profiency" />
+          
+        </mat-form-field>
+       </div>
+       
+  
+        <div class="btn-sec">
+          <button mat-icon-button [disabled]="languageForm.invalid" type="submit"  class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+
+
+
+

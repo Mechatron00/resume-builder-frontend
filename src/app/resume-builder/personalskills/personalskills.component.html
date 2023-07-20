@@ -1,0 +1,26 @@
+
+<form class="personalskills-form" [formGroup]="personalSkillForm" (ngSubmit)="addPersonalSkill()">
+  
+        <div class="btn-add">
+          <button  mat-icon-button  type="button" (click)="addAnother()" class="add"><mat-icon>add_box</mat-icon></button>
+      </div> 
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Personal Skill</mat-label>
+          <input matInput placeholder="Team leader" formControlName="description" required />
+          <mat-error *ngIf="personalSkillForm.get('description')?.hasError('required')">
+            Enter your personal skill
+           </mat-error>
+        </mat-form-field>
+       </div>
+  
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="personalSkillForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+
+

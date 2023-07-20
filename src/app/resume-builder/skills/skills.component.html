@@ -1,0 +1,28 @@
+
+<form class="skills-form" [formGroup]="skillsForm" (ngSubmit)="addSkill()">
+ 
+        <div class="btn-add">
+          <button  mat-icon-button type="button" (click)="addAnother()"  class="add"><mat-icon>add_box</mat-icon></button>
+      </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Skill</mat-label>
+          <input matInput placeholder="" formControlName="skill" />
+        </mat-form-field>
+       </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Competetence</mat-label>
+          <input matInput placeholder=""  formControlName="competetence"/>
+        </mat-form-field>
+       </div>
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit"  class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+
+

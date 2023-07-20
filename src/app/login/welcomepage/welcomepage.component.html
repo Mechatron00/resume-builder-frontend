@@ -1,0 +1,21 @@
+<ngb-carousel
+	#carousel
+	[interval]="2000"
+	[pauseOnHover]="false"
+>
+	<ng-template ngbSlide *ngFor="let img of images; index as i;">
+		<div class="carousel-caption  aligner">
+			<div   >
+				<h1 class="description" >{{description[i]}}</h1>
+			</div>
+		</div>
+		
+			<div class="picsum-img-wrapper">
+				<img [src]=img alt="My image {{i + 1}}" style="width: 100%; height: 93.6vh"/>
+			</div>
+		
+	</ng-template>
+</ngb-carousel>
+
+
+

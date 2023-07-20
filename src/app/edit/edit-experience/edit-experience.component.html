@@ -1,0 +1,74 @@
+<mat-accordion class="accordian example-headers-align" multi>
+    <mat-expansion-panel  expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Experience
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit Experience Data
+          <mat-icon><span class="material-symbols-outlined">
+            work
+            </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+<form class="experience-form" [formGroup]="editExperienceForm" (ngSubmit)="editExperience()">
+
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Company</mat-label>
+          <input matInput placeholder="" formControlName="company" required/>
+        </mat-form-field>
+       </div>
+     
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Location</mat-label>
+            <input matInput placeholder="" formControlName="location" />
+          </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="web">
+              <mat-label>Position</mat-label>
+              <input matInput placeholder="ex.Senior developer" formControlName="position" required/>
+            </mat-form-field>
+          </div>
+    
+        <div class="dates">
+          <mat-form-field appearance="outline">
+            <mat-label>Start-date</mat-label>
+            <input matInput [matDatepicker]="sd" formControlName="startDate" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="sd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #sd></mat-datepicker>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>End-date</mat-label>
+            <input matInput [matDatepicker]="ed" formControlName="endDate" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="ed"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #ed></mat-datepicker>
+          </mat-form-field>
+          
+        </div>
+        <div>
+ 
+          <mat-form-field appearance="outline"  class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput  class="area" formControlName="description"  maxlength="160"
+            placeholder="Enter description upto 160 characters"></textarea>
+          </mat-form-field>
+        </div>
+  
+        <div class="btn-sec">
+        <button mat-icon-button type="submit" [disabled]="editExperienceForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+      </div>
+
+  </form>
+    </mat-expansion-panel>
+  </mat-accordion>

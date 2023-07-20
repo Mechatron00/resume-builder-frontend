@@ -1,0 +1,50 @@
+.personal-details-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  
+  .dates {
+    display: flex;
+    justify-content: space-between;
+  }
+  .web
+  {
+     
+      width: 900px;
+  }
+  .description
+  {
+      width: 900px;
+      
+  }
+  
+  .btn-sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accordian
+{
+  display: flex; 
+   justify-content: center;
+  
+}
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-action
+{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+

@@ -1,0 +1,44 @@
+<mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Skills
+        </mat-panel-title>
+        <mat-panel-description>
+          Add you skills.
+          <mat-icon><span class="material-symbols-outlined">
+              stars
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form class="skills-form" [formGroup]="addSkillsForm" (ngSubmit)="addSkill()">
+ 
+
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Skill</mat-label>
+          <input matInput placeholder="" formControlName="skill" required=""/>
+          <mat-error *ngIf="addSkillsForm.get('skill')?.hasError('required')">Enter skill.</mat-error>
+
+        </mat-form-field>
+       </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Competetence</mat-label>
+          <input matInput placeholder=""  formControlName="competetence"/>
+        </mat-form-field>
+       </div>
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="addSkillsForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+
+
+  
+    </mat-expansion-panel>
+  </mat-accordion>

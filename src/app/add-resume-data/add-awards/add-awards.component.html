@@ -1,0 +1,74 @@
+
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Awards </mat-panel-title>
+        <mat-panel-description>
+          Add your awards here!
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              military_tech
+            </span></mat-icon
+          >
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="awards-form" [formGroup]="addAwardsForm" (ngSubmit)="addAward()">
+        <div>
+             <div>
+              <div>
+                <mat-form-field appearance="outline" class="web">
+                  <mat-label>Title</mat-label>
+                  <input matInput formControlName="title" placeholder="" required/>
+                  <mat-error *ngIf="addAwardsForm.get('title')?.hasError('required')">
+                    Enter award title.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="web">
+                  <mat-label>Issuer</mat-label>
+                  <input matInput formControlName="issuer" placeholder=""  required/>
+                  <mat-error *ngIf="addAwardsForm.get('issuer')?.hasError('required')">
+                    Enter award issuer.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="dates">
+                <mat-form-field appearance="outline">
+                  <mat-label>Issued-date</mat-label>
+                  <input matInput formControlName="issuedDate" [matDatepicker]="sd" required/>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="sd"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #sd></mat-datepicker>
+                  <mat-error *ngIf="addAwardsForm.get('issuedDate')?.hasError('required')">
+                    Issued date required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="description">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput   formControlName="description" maxlength="200"></textarea>
+                  <mat-hint>Enter upto 200 characters. 
+                    <span *ngIf="addAwardsForm.get('description')?.valueChanges">
+                      {{getCount()}}{{count}}/200
+                    </span>
+                  </mat-hint>
+                </mat-form-field>
+              </div>
+      
+              <div class="btn-sec">
+               
+                <button mat-icon-button type="submit" class="btn" [disabled]="addAwardsForm.invalid">
+                  <mat-icon>save</mat-icon>
+                </button>
+                
+              </div>
+            </div>
+    
+      </div>
+      </form>     
+    </mat-expansion-panel>
+  </mat-accordion>

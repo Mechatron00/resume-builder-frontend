@@ -1,0 +1,280 @@
+<div style="display: flex;">   
+    <span style="margin-left:  40px;"><h2>Additionally you can edit your resume here too.You can delete fields you want.</h2></span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="toggle()">
+      <mat-icon>edit</mat-icon>
+     
+    </button>
+   
+    <button  style=" margin-left: 20px;" mat-icon-button (click)="downloadAsPdf()">
+      <mat-icon>print</mat-icon>
+     
+    </button>
+ 
+</div>
+<div  #page id="page" class="droid  page" [contentEditable]="toggleEdit">
+  
+  <div class="row" style="margin-bottom: 10px">
+    <div class="col-sm-8">
+      <div id="info" style="padding-top: 50px; padding-bottom: 0px">
+        <p id="contentName" style="font-size: 50px">{{personalDetails.fname}} {{personalDetails.lname}}</p>
+        <p id="contentLocation" style="font-size: 18px; padding-left: 20px">
+            {{personalDetails.city}},{{personalDetails.state}}
+        </p>
+      </div>
+    </div>
+    <div
+      class="col-sm-4"
+      style="text-align: start; padding-top: 40px; padding-bottom: 0px; padding-left: 30px;"
+    >
+      <p *ngIf="personalDetails.contact">
+        <fa-icon
+        class="icon-appearance"
+        [icon]="faPhone"
+      ></fa-icon>
+      {{personalDetails.contact}}</p>
+      <p style="margin-top: -10px" *ngIf="personalDetails.email">
+        <fa-icon
+        class="icon-appearance"
+        [icon]="faEmail"
+      ></fa-icon>
+        <span id="contactLink1">{{personalDetails.email}}</span>
+      </p>
+      <p style="margin-top: -10px; margin-bottom: 10px" *ngIf="personalDetails.linkedin_link">
+        <span id="contactLink2">
+          <fa-icon
+          class="icon-appearance"
+            [icon]="faLinkedin"
+          ></fa-icon> 
+          <a href="{{personalDetails.linkedin_link}}" target="_blank">Linkedin</a></span>
+      </p>
+      <p style="margin-top: -10px; margin-bottom: 10px"  *ngIf="personalDetails.githublink">
+        <span id="contactLink3">
+          <fa-icon
+          class="icon-appearance"
+          [icon]="faGithub"
+        ></fa-icon>
+        <a href="{{personalDetails.githublink}}" target="_blank">Github</a>
+        </span>
+      </p>
+      <p style="margin-top: -10px; margin-bottom: 10px" *ngIf="personalDetails.website">
+        <span id="contactLink4"> 
+          <fa-icon
+          class="icon-appearance"
+          [icon]="faWebsite"
+        ></fa-icon>
+        <a href="{{personalDetails.website}}" target="_blank">Website</a>
+      </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="section" id="sectionObjective" *ngIf="objectives.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Objective</strong></h4>
+      <hr class="hr-below">
+    </div>
+    <ul class="nobullet">
+      <li>
+        <div class="text" *ngFor="let objective of objectives">
+          <strong
+            >{{objective.objective}}</strong>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="section" id="sectionEducation" *ngIf="educations.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Education</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul class="nobullet" *ngFor="let education of educations">
+      <li>
+        <div class="text" style="display: flex">
+          <span
+            ><strong>{{education.degree}} <span *ngIf="education.branch">[{{education.branch}}]</span> </strong></span
+          >
+          <span style="flex-grow: 1"></span>{{education.startDate | date:('MMM yyyy')}}-{{education.endDate | date:('MMM yyyy') }}<span></span>
+        </div>
+        <div class="text" style="display: flex">
+          <span>{{education.institute_name}}</span>
+          <span style="flex-grow: 1"></span><span>{{education.score}}%</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionExperience" *ngIf="experiences.length !==0"> 
+    <div class="section-title ruled rule-above">
+      <h4><strong>Experience</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let experience of experiences">
+      <li>
+        <div class="text" style="display: flex">
+          <span><strong>{{experience.company}},{{experience.location}}</strong></span>
+          <span style="flex-grow: 1"></span>{{experience.startDate | date:('MMM yyyy')}}-{{experience.endDate | date:('MMM yyyy') }}<span></span>
+        </div>
+        <div class="text" style="display: flex">
+          <span></span> {{experience.position}}<span style="flex-grow: 1"></span>
+        </div>
+        <div *ngIf="experience.description">
+         {{experience.description}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionProject" *ngIf="projects.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Project</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let project of projects">
+      <li>
+        <div class="text" style="display: flex">
+          <span *ngIf="project.weblink"><strong><a href="{{project.weblink}}">{{project.title}}</a></strong></span>
+          <span *ngIf="!project.weblink"><strong>{{project.title}}</strong></span>
+          <span style="flex-grow: 1"></span><span>{{project.startDate | date:('MMM yyyy')}}-{{project.endDate | date:('MMM yyyy') }}</span>
+        </div>
+        <div *ngIf="project.description">
+        {{project.description}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionCertification" *ngIf="certificates.length !==0"> 
+    <div class="section-title ruled rule-above">
+      <h4><strong>Certification</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let certificate of certificates" >
+      <li>
+        <div class="text" style="display: flex">
+            <span *ngIf="certificate.weblink"><strong><a href="{{certificate.weblink}}">{{certificate.title}}</a></strong></span>
+          <span *ngIf="!certificate.weblink"><strong>{{certificate.title}}</strong></span>
+          <span style="flex-grow: 1"></span>{{certificate.issuedDate | date:('MMM yyyy')}}<span></span>
+        </div>
+        <div class="text" style="display: flex">
+          <span>{{certificate.issuedBy}}</span> <span style="flex-grow: 1"></span>
+        </div>
+
+        <div *ngIf="certificate.description">
+          {{certificate.description}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionPersonalskills"  *ngIf="peronalSkills.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Personal Skills</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let peronalSkill of peronalSkills">
+      <li><div class="text">{{peronalSkill.description}}</div></li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionSkills"  *ngIf="skills.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Skills</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul >
+      <div class="row" >
+        <div class="col-sm-6" *ngFor="let skill of skills.slice(0,skills.length/2)">
+          <li>{{skill.skill}}</li>
+        </div>
+        <div class="col-sm-6" *ngFor="let skill of skills.slice(skills.length/2)">
+            <li>{{skill.skill}}</li>
+        </div>
+      </div>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionAward" *ngIf="awards.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Award</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let award of awards">
+      <li>
+        <div class="text" style="display: flex">
+          <span><strong>{{award.title}}</strong></span>
+          <span style="flex-grow: 1"></span><span>{{award.issuedDate | date:('MMM yyyy')}}</span>
+        </div>
+        <div class="text" style="display: flex">
+          <span>{{award.issuer}}</span> <span style="flex-grow: 1"></span>
+        </div>
+        <div *ngIf="award.description">
+          {{award.description}}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionCurricular" *ngIf="extracurriculars.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Extracurricular Activity</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul *ngFor="let activity of extracurriculars">
+      <li><div class="text">{{activity.description}}</div></li>
+    </ul>
+  </div>
+
+  <div class="section" id="sectionLanguage" *ngIf="languages.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Language</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul>
+      <div class="col-sm-6"  *ngFor="let language of languages">
+        <li>{{language.language}}</li>
+      </div>
+    </ul>
+  </div>
+  <div class="section" id="sectionHobbies" *ngIf="hobbies.length !==0">
+    <div class="section-title ruled rule-above">
+      <h4><strong>Hobbies</strong></h4>
+      <hr class="hr-below" />
+    </div>
+    <ul>
+        <div class="row" >
+            <div class="col-sm-6" *ngFor="let hobby of hobbies.slice(0,skills.length/2)">
+              <li>{{hobby.hobby}}</li>
+            </div>
+            <div class="col-sm-6" *ngFor="let hobby of hobbies.slice(skills.length/2)">
+                <li>{{hobby.hobby}}</li>
+            </div>
+          </div>
+    </ul>
+  </div>
+  <br />
+  <br />
+  <div class="section" id="sectionConsent">
+    <div class="text" style="display: flex">
+      <span>Declaration:</span> <span style="flex-grow: 1"></span>
+    </div>
+    <div style="padding-left: 25px">
+      I hereby confirm that all the details furnished above are authentic and
+      accurate to the best of my belief.
+    </div>
+</div>
+    <div style="padding-left: 25px;" class="section" id="sectionLine" >
+        <hr class="hr-consent"  style="color: #000;
+
+        border: 1.5px solid black;
+        height: 1.5px;
+        margin-top: 30px;
+        width: 30%;"/>
+    </div>
+    <br>
+    <br>
+    <div style="display: flex;justify-content: center;align-items: center;">
+        *    *    *
+    </div>
+ 
+</div>

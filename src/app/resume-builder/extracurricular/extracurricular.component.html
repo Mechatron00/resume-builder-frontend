@@ -1,0 +1,29 @@
+
+<form class="extracurricular-form" [formGroup]="extracurricularForm" (ngSubmit)="addExtracurricular()">
+
+         <div class="btn-add">
+          <button  mat-icon-button type="button" (click)="addAnother()"  class="add"><mat-icon>add_box</mat-icon></button>
+      </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="" formControlName="description" required maxlength="80"/>
+          <mat-error *ngIf="extracurricularForm.get('description')?.hasError('required')">
+            Activity is required
+          </mat-error>
+          <mat-error *ngIf="extracurricularForm.get('description')?.hasError('maxlength')">
+           Max 50characters allowed
+          </mat-error>
+        </mat-form-field>
+       </div>
+       
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="extracurricularForm.invalid"  class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+
+  </form>
+
+
+
+

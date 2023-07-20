@@ -1,0 +1,58 @@
+
+
+  <mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Certificates
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit Certification
+          <mat-icon><span class="material-symbols-outlined">
+            workspace_premium
+            </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="certification-form" [formGroup]="editCerificationForm" (ngSubmit)="editCertification()">
+        <div>
+         <mat-form-field appearance="outline" class="web">
+           <mat-label>Title</mat-label>
+           <input matInput placeholder="" formControlName="title" required/>
+         </mat-form-field>
+        </div>
+        <div>
+         <mat-form-field appearance="outline" class="web">
+           <mat-label>Weblink</mat-label>
+           <input matInput placeholder="" formControlName="weblink" />
+         </mat-form-field>
+        </div>
+        <div>
+         <mat-form-field appearance="outline" class="web">
+           <mat-label>Issuer</mat-label>
+           <input matInput placeholder="" formControlName="issuedBy" required />
+         </mat-form-field>
+        </div>
+         <div class="dates">
+           <mat-form-field appearance="outline">
+             <mat-label>Issued-date</mat-label>
+             <input matInput [matDatepicker]="sd" formControlName="issuedDate" required/>
+             <mat-datepicker-toggle
+               matIconSuffix
+               [for]="sd"
+             ></mat-datepicker-toggle>
+             <mat-datepicker #sd></mat-datepicker>
+           </mat-form-field>
+         </div>
+         <div>
+           <mat-form-field appearance="outline"  class="description">
+             <mat-label>Description</mat-label>
+             <textarea matInput formControlName="description"  class="area"maxlength="160"></textarea>
+           </mat-form-field>
+         </div>
+   
+         <div class="btn-sec">
+           <button mat-icon-button type="submit" [disabled]="editCerificationForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+         </div>
+   </form> 
+    </mat-expansion-panel>
+  </mat-accordion>

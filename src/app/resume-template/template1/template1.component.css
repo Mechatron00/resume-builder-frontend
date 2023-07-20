@@ -1,0 +1,128 @@
+#page {
+  width: 595pt;
+ 
+  background-color: white;
+  margin: 1% auto 1% auto;
+  padding: 30px 45px 30px 25px;
+  box-shadow: 0px 0px 20px 0px #000;
+  line-height: 1.4em;
+  text-align: left;
+}
+
+#page h2 {
+  margin-bottom: 4px;
+}
+#page h5 {
+  margin-top: 2px;
+  margin-bottom: 3px;
+}
+
+a {
+  color: #000000;
+}
+
+ul {
+  margin-left: 20px;
+  padding-left: 20px;
+}
+li {
+  margin-top: 1%;
+}
+li li {
+  margin-top: 0.25%;
+}
+
+.section-title h4 {
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+.section-title.uppercase h4 {
+  text-transform: uppercase;
+}
+.section-title.shaded h4 {
+  padding: 3px;
+  padding-left: 10px;
+  font-size: 30px;
+  background-color: #ccc !important;
+}
+
+.section-title.ruled.rule-above hr.hr-below {
+  border: 1px solid hsl(0, 0%, 40%);
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.hr-consent {
+  color: #000;
+
+  border: 1.5px solid black;
+  height: 1.5px;
+  margin-top: 30px;
+  width: 30%;
+}
+
+.section-title.shaded hr {
+  border: none;
+  margin: 0px;
+}
+
+.text {
+  color: #444;
+  font-size: 13.5px;
+}
+.time {
+  color: #333;
+  font-style: italic;
+  margin-right: 1px;
+}
+.mentor {
+  font-weight: 300;
+  font-style: italic;
+}
+.link {
+  color: #666;
+  margin-left: 30px;
+  font-weight: 300;
+  font-style: italic;
+  margin-right: 1px;
+}
+
+.no-link .link {
+  display: none;
+}
+
+#page.verdana-sans * {
+  font-family: "Verdana", sans-serif;
+}
+#page.montserrat * {
+  font-family: "Montserrat", sans-serif;
+}
+#page.roboto * {
+  font-family: "Roboto", sans-serif;
+}
+#page.droid * {
+  font-family: "Droid Serif", serif;
+}
+.droid strong,
+.verdana-sans strong,
+.montserrat strong {
+  font-weight: 700;
+}
+.roboto strong {
+  font-weight: 500;
+}
+.droid .title,
+.verdana-sans .title,
+.montserrat .title {
+  font-weight: 700;
+}
+.roboto .title {
+  font-weight: 500;
+}
+
+.example-spacer {
+  flex-grow: 1;
+}
+.icon-appearance
+{
+  padding-right:5px ;
+}

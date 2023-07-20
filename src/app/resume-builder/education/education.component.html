@@ -1,0 +1,83 @@
+
+<form class="education-form" [formGroup]="educationForm" (ngSubmit)="addEducation()">
+
+         <div class="btn-add">
+          <button  mat-icon-button  type="button" class="add" (click)="addAnother()"><mat-icon>add_box</mat-icon></button>
+      </div> 
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Institution name</mat-label>
+          <input matInput placeholder="" formControlName="institute_name"  required/>
+          <mat-error *ngIf="educationForm.get('institute_name')?.hasError('required')">
+            Enter Institution name
+          </mat-error>
+        </mat-form-field>
+       </div>
+     
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Degree</mat-label>
+            <input matInput placeholder="ex.BE." formControlName="degree"  required/>
+            <mat-error *ngIf="educationForm.get('degree')?.hasError('required')">
+              Enter degree
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="web">
+              <mat-label>Branch</mat-label>
+              <input matInput placeholder="ex.Mechanical" formControlName="branch" />
+            </mat-form-field>
+          </div>
+    
+        <div >
+        
+          <mat-form-field appearance="outline" class="mat-date">
+            <mat-label>Start-date</mat-label>
+            <input matInput [matDatepicker]="sd" formControlName="startDate"  required/>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="sd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #sd
+            
+            ></mat-datepicker>
+            <mat-error *ngIf="educationForm.get('startDate')?.hasError('required')">
+              Enter start date
+            </mat-error>
+          </mat-form-field>
+         
+    
+        
+          <span class="dates">
+            <mat-form-field appearance="outline" class="mat-date">
+              <mat-label>End-date</mat-label>
+              <input matInput [matDatepicker]="ed" formControlName="endDate" required/>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="ed"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #ed></mat-datepicker>
+              <mat-error *ngIf="educationForm.get('endDate')?.hasError('required')">
+                Enter end date
+              </mat-error>
+            </mat-form-field>
+          </span>
+        
+          
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Score</mat-label>
+            <input matInput placeholder="Enter your final score in %" formControlName="score" required/>
+            <mat-error *ngIf="educationForm.get('score')?.hasError('required')">
+              Enter your marks
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="btn-sec">
+        <button mat-icon-button type="submit" [disabled]="educationForm.invalid"  class="btn"><mat-icon>save</mat-icon></button>
+      </div>
+   
+
+  </form>

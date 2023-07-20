@@ -1,0 +1,41 @@
+
+<mat-accordion class="accordian example-headers-align" multi  >
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Objectives </mat-panel-title>
+        <mat-panel-description>
+          Edit objective
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              emoji_flags
+            </span></mat-icon
+          >
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+<form
+class="objectives-form"
+[formGroup]="editObjectivesForm"
+(ngSubmit)="editObjective()"
+>
+    <div>
+      <mat-form-field appearance="outline" class="web">
+        <mat-label>Objective</mat-label>
+        <textarea
+          class="area"
+          formControlName="objective"
+          matInput required maxlength="160"
+          placeholder="ex.A challenging career opportunity in a growing company that offers opportunity for advancement."
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="btn-sec">
+      <button mat-icon-button [disabled]="editObjectivesForm.invalid" type="submit" class="btn">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+</form>
+    </mat-expansion-panel>
+  </mat-accordion>
+<router-outlet></router-outlet>

@@ -1,0 +1,28 @@
+
+<form class="hobbies-form" [formGroup]="hobbiesForm" (ngSubmit)="addHobby()">
+        <div class="btn-add">
+          <button  mat-icon-button type="button" (click)="addAnother()"  class="add"><mat-icon>add_box</mat-icon></button>
+      </div>
+       <div>
+        <mat-form-field appearance="outline" class="web">
+          <mat-label>Hobby</mat-label>
+          <input matInput placeholder="Reading" formControlName="hobby"  required/>
+          <mat-error *ngIf="hobbiesForm.get('hobby')?.hasError('required')">
+            Enter hobby
+           </mat-error>
+        </mat-form-field>
+       </div>
+       
+       
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="hobbiesForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+   
+
+  </form>
+
+
+
+
+

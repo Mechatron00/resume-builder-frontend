@@ -1,0 +1,215 @@
+.name-plate {
+  font-family: "Roboto", sans-serif;
+  font-size: xx-large;
+  font-weight: 400;
+ 
+}
+.mat-h1
+{
+ border: 1px;
+ border-radius: 40px;
+ background-color: transparent;
+}
+.details {
+  /* font-family: "Raleway", sans-serif; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+  font-weight: 300;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.objective {
+  font-family: 'Comfortaa', cursive, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+.content
+{
+  margin-top: 5px;
+  
+  font-family: "Raleway", sans-serif;
+  font-weight: light;
+  font-size: 17px;
+  
+}
+.data-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  display: flex;
+  justify-content: flex-end;
+}
+.toolbar
+{
+  border: 1px;
+  border-radius: 5px;
+  /* box-shadow: 1px 3px 3px black;   */
+  background-color: transparent;
+  color: black;
+}
+.toolbar-heading {
+  font-family: "Ubuntu", sans-serif;
+  font-size: x-large; 
+  padding-left: 10px;
+}
+.no-record {
+  color: #B22222;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+}
+.skills
+{
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  position: absolute;
+  
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+ 
+  border: 1px;
+  border-radius: 5px;
+  
+  
+}
+
+.delete-button
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+
+.accordian
+{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* dashboard */
+.grid-container {
+  margin: 20px;
+  
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px;
+  border-radius: 12px;
+  /* box-shadow: 0px 0px 5px 0px #000; */
+ 
+ 
+  
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: flex;
+
+  
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+
+
+.social-icons
+{
+ display: inline-block;
+ text-align: left;
+ padding-left: 10px;
+ 
+ 
+}
+.icon-appearance
+{
+  color: black;
+}
+
+.icons{
+  font-size:25px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  
+}
+
+
+
+
+/*  *************** */
+.card-content {
+  overflow: auto;
+}
+
+.objectives-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.objective-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.objective {
+  margin-right: 10px;
+}
+
+.example-spacer {
+  flex-grow: 1;
+}
+
+.toolmenu
+{
+  
+  height: 60px;
+  
+}
+
+.outlet
+{
+  z-index: 3;
+}
+
+.profile-menu
+{
+  display: flex;
+
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the spacing between chips */
+}
+
+.weblink
+{
+  color: black;
+ 
+
+}
+

@@ -1,0 +1,104 @@
+<mat-accordion class="accordian example-headers-align" multi>
+    <mat-expansion-panel   expanded  hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Personal Details </mat-panel-title>
+        <mat-panel-description>
+          Edit your Personal Details
+        <mat-icon><span class="material-symbols-outlined"> badge </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+<form class="personal-details-form" [formGroup]="editDetailsForm" (ngSubmit)="editPersonalDetails()" autocomplete="on">
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="ex.John" formControlName="fname" required/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="ex.Wick" formControlName="lname" required/>
+          </mat-form-field>
+        </div>
+  
+        <div class="dates">
+          <mat-form-field appearance="outline">
+            <mat-label>Birthdate</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" required/>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <input type="text"
+                   placeholder="Choose one"   
+                   matInput 
+                   formControlName="gender"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="ex.john@gmail.com" formControlName="email" required/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Contact</mat-label>
+            <input matInput placeholder="98xxxxxxxx" formControlName="contact" required/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="ex.Pune" formControlName="city" required/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="MH" formControlName="state" />
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Linkedin</mat-label>
+            <input matInput placeholder="Linkedin profile" formControlName="linkedin_link"/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Github</mat-label>
+            <input matInput placeholder="Github link" formControlName="githublink"/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline" class="web">
+            <mat-label>Website/Portfolio</mat-label>
+            <input matInput placeholder="website" formControlName="website" />
+          </mat-form-field>
+        </div>
+  
+        <div class="btn-sec">
+          <button mat-icon-button type="submit" [disabled]="editDetailsForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+        </div>
+  </form>
+    </mat-expansion-panel >
+  </mat-accordion>

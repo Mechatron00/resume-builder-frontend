@@ -1,0 +1,41 @@
+<mat-accordion class="example-headers-align accordian" multi>
+    <mat-expansion-panel expanded hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Language
+        </mat-panel-title>
+        <mat-panel-description>
+          List languages you speak.
+          <mat-icon><span class="material-symbols-outlined">
+              translate
+              </span></mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+     
+<form class="languages-form" [formGroup]="addLanguageForm" (ngSubmit)="addLanguage()">
+
+
+   <div>
+    <mat-form-field appearance="outline" class="web">
+      <mat-label>Language</mat-label>
+      <input matInput placeholder="ex.Marathi" formControlName="language" required/>
+      <mat-error *ngIf="addLanguageForm.get('language')?.hasError('required')">Enter language.</mat-error>
+    </mat-form-field>
+   </div>
+   <div>
+    <mat-form-field appearance="outline" class="web">
+      <mat-label>Profiency</mat-label>
+      <input matInput placeholder="ex.Native" formControlName="profiency" />
+    </mat-form-field>
+   </div>
+   
+
+    <div class="btn-sec">
+      <button mat-icon-button type="submit" [disabled]="addLanguageForm.invalid" class="btn"><mat-icon>save</mat-icon></button>
+    </div>
+
+
+</form>
+
+    </mat-expansion-panel>
+  </mat-accordion>

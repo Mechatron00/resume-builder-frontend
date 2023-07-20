@@ -1,0 +1,41 @@
+.experience-form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.btn-add
+{
+    display: flex;
+    justify-content:  flex-end;
+    padding: 10px;
+}
+
+.dates
+{
+    padding-left: 50px;
+}
+.web
+{
+   
+    width: 1200px;
+}
+.description
+{
+    width: 1200px;
+    
+}
+
+.btn-sec
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+ 
